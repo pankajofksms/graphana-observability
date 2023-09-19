@@ -110,11 +110,11 @@
       },
       "id": 26,
       "options": {
-        "content": "Dashboard for a simple [Spring Boot](https://spring.io/guides/gs/spring-boot) application, [Hello Observability](https://github.com/adamquan/hello-observability), to demonstrate observability by collecting and correlating logs, metrics and traces with:\n- [Prometheus](https://prometheus.io/)\n- [OpenTelemetry](https://opentelemetry.io/)\n- [Grafana Agent](https://grafana.com/docs/grafana-cloud/agent/)\n- [Grafana Cloud](https://grafana.com/products/cloud/)\n \n<img alt=\"architecture\" src=\"https://github.com/adamquan/hello-observability/raw/main/images/architecture.png\" width=\"1000\">",
+        "content": "Dashboard for a simple [Spring Boot](https://spring.io/guides/gs/spring-boot) application, [Grafana Observability](https://github.com/pankajofksms/graphana-observability), to demonstrate observability by collecting and correlating logs, metrics and traces with:\n- [Prometheus](https://prometheus.io/)\n- [OpenTelemetry](https://opentelemetry.io/)\n- [Grafana Agent](https://grafana.com/docs/grafana-cloud/agent/)\n- [Grafana Cloud](https://grafana.com/products/cloud/)",
         "mode": "markdown"
       },
       "pluginVersion": "8.4.3",
-      "title": "Hello Observability",
+      "title": "Grafana Observability",
       "type": "text"
     },
     {
@@ -578,7 +578,7 @@
             "uid": "Prometheus"
           },
           "exemplar": true,
-          "expr": "up{job=\"hello-observability\"}",
+          "expr": "up{job=\"grafana-observability\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -890,7 +890,7 @@
             "uid": "Prometheus"
           },
           "exemplar": false,
-          "expr": "sum by (path) (rate(requests_total{job=\"hello-observability\"} [1m]) * 60)",
+          "expr": "sum by (path) (rate(requests_total{job=\"grafana-observability\"} [1m]) * 60)",
           "interval": "",
           "legendFormat": "{{path}}",
           "refId": "A"
@@ -1175,7 +1175,7 @@
             "type": "loki",
             "uid": "Loki"
           },
-          "expr": "{job=\"hello-observability\"}",
+          "expr": "{job=\"grafana-observability\"}",
           "refId": "A"
         }
       ],
@@ -1195,7 +1195,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Hello Observability",
+  "title": "Grafana Observability",
   "uid": "UjJzQ1L7k",
   "version": 2,
   "weekStart": ""
