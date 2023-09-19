@@ -1,0 +1,9 @@
+Build image - docker build -t grafana-observability .
+
+Run above image - docker run -d -p 8080:8080 --name grafana-observability grafana-observability
+
+Docker compose - 
+cd local
+docker-compose up
+
+
