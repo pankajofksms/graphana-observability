@@ -629,7 +629,7 @@
           },
           "editorMode": "builder",
           "exemplar": true,
-          "expr": "histogram_quantile(0.95, sum by(http_target, le) (rate(traces_spanmetrics_latency_bucket{service=\"grafana-observability\"}[15s])))",
+          "expr": "histogram_quantile(0.95, sum by(http_target, le) (rate(traces_spanmetrics_latency_bucket{service=\"hello-observability\"}[15s])))",
           "interval": "",
           "legendFormat": "{{http_target}}",
           "range": true,
@@ -653,7 +653,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Grafana Observability, Top Level Endpoints RED",
+  "title": "Hello Observability, Top Level Endpoints RED",
   "uid": "4VSk5Lank",
   "version": 1,
   "weekStart": ""

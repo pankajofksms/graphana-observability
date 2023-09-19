@@ -1,19 +1,19 @@
 version: "3"
 services:
 
-  # The grafana-observability application
-  grafana-observability:
-    image: grafana-observability
+  # The hello-observability application
+  hello-observability:
+    image: hello-observability
     volumes:
       # Log files. They are all also accessible to the agent container,
       # through docker volume mount
-      - ./logs/grafana-observability.log:/tmp/grafana-observability.log
+      - ./logs/hello-observability.log:/tmp/hello-observability.log
       - ./logs/access_log.log:/tmp/access_log.log
     environment:
       # Tracing configuration
       JAVA_TOOL_OPTIONS: -javaagent:./opentelemetry-javaagent.jar    
       OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: http://tempo:4317
-      OTEL_SERVICE_NAME: grafana-observability
+      OTEL_SERVICE_NAME: hello-observability
       OTEL_TRACES_EXPORTER: otlp
     ports:
       - "8080:8080"
@@ -22,7 +22,7 @@ services:
   load-generator:
     image: curlimages/curl:latest
     volumes:
-      - ./load-generator/load-generator.sh:/tmp/load-generator.sh
+      - ../hello-observability/load-generator.sh:/tmp/load-generator.sh
     command: /bin/sh -c "/tmp/load-generator.sh"
   
   loki:
@@ -72,7 +72,7 @@ services:
       - ./config/grafana.ini:/etc/grafana/grafana.ini
       # Pre-load the data sources
       - ./config/grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
-      # Pre-load the grafana Observability dashboard
+      # Pre-load the Hello Observability dashboard
       - ./dashboards:/etc/grafana/provisioning/dashboards
     environment:
       - GF_AUTH_ANONYMOUS_ENABLED=true
@@ -90,7 +90,7 @@ services:
       # Agent configuration
       - ./config/agent.yaml:/etc/agent-config/agent.yaml
       # Log files
-      - ./logs/grafana-observability.log:/tmp/grafana-observability.log
+      - ./logs/hello-observability.log:/tmp/hello-observability.log
       - ./logs/access_log.log:/tmp/access_log.log
     entrypoint:
       - /bin/grafana-agent
