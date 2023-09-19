@@ -7,7 +7,7 @@ This is a sample project on graphana and spring-boot.
 
 The whole stack contains:
 
-The Hello Observability application
+The Grafana Observability application
  - A simple load runner
  - [Prometheus](https://grafana.com/oss/prometheus/?pg=blog&plcmt=body-txt) for metrics
  - [Grafana Loki](https://grafana.com/oss/loki/?pg=blog&plcmt=body-txt) for logs
